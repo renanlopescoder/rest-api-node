@@ -1,6 +1,6 @@
 var api = angular.module('api',['ngRoute','services','directives']);
 
-taskApp.config(['$routeProvider','$locationProvider',
+api.config(['$routeProvider','$locationProvider',
   function($routeProvider, $locationProvider) {
 
   $routeProvider.when('/', {
