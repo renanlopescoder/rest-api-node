@@ -68,3 +68,7 @@ Motivo do desenvolvimento da API é disponibilizar a desenvolvedores Front End u
 
 By: <a href="http://renanlopes.com">Renan Lopes</a>
 
+[heroku.com]: <https://www.heroku.com>
+[mlab.com]: <https://mlab.com>
+[github.com]: <https://www.github.com>
+[nodemon.com]: <https://nodemon.io/>
