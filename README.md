@@ -11,7 +11,7 @@ Motivo do desenvolvimento da API é disponibilizar a desenvolvedores Front End u
 ## Rotas
 
 | url | collection | método | parâmetros | retorno | ação |
-| ------ | ------ | ------ | ------ |
+| ------ | ------ | ------ | ------ | ------ | ------ | 
 | https://api-rest-node-herokuapp.com/list/projects | projects | get | Não Possui | JSON com Array | Pega lista de projetos no banco |
 | https://api-rest-node-herokuapp.com/create/project | projects | post | JSON | JSON | adiciona JSON ao banco |
 | https://api-rest-node-herokuapp.com/update/project/:id | projects | put | id, JSON | atualiza o documento com dados do JSON enviado |
