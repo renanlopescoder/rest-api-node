@@ -4,7 +4,7 @@ var api = {};
 let model = mongoose.model('Project');
 
 api.list = function (req, res){
-	model.find({},function(error, lista){
+	model.find({},function(error, list){
 		if(error){
 			res.status(500).json(error);
 		}
