@@ -1,15 +1,15 @@
 var mongoose = require('mongoose');
 var api = {};
 
-var model = mongoose.model('Data'); // Igual ao nome dado ao Model
+let model = mongoose.model('Project');
 
-api.lista = function (req, res){
-	model.find({},function(error, lista){ // primeiro parametro erro segundo a lista de tarefas
-		if(error){ // caso erro mandamos um erro
+api.list = function (req, res){
+	model.find({},function(error, lista){
+		if(error){
 			res.status(500).json(error);
 		}
-		res.json(lista);
-	}); // Trará as informações da lista
+		res.json(list);
+	}); 
 
 };
 
@@ -24,9 +24,7 @@ api.create = function(req, res){
 
 };
 
-api.buscaPorId = function(req,res){
-
-	//Usando promisses
+api.searchById = function(req,res){
 
 	model
 		.findById(req.params.id)
@@ -42,10 +40,10 @@ api.buscaPorId = function(req,res){
 
 };
 
-api.removePorId = function(req,res){
+api.deleteById = function(req,res){
 	model.remove({_id: req.params.id})
 	.then(function(){
-		res.sendStatus(204);
+		res.sendStatus(200);
 	}, function(error){
 		console.log(error);
 		res.status(404).json (error);

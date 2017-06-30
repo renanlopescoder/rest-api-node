@@ -1,141 +1,64 @@
-## API Rest NodeJS
+![NodeJS logo](http://cfile10.uf.tistory.com/image/1973644A5149370931E7E6)
 
-API REST built with NodeJS.
+## Api Rest Node
 
-- Hackathon MVP Mobile Ionic - <a href="https://github.com/renanlopescoder/hackathon-mvp-mobile-ionic">https://github.com/renanlopescoder/hackathon-mvp-mobile-ionic</a> 
+Api desenvolvida em NodeJS, Express e MongoDB para teste de aplicações Front End.
 
-## Resources
+### Descrição
 
-- Back End -> NodeJS / Express
-- Database -> mLab MongoDB (NoSQL Database)
-- Cloud Server -> Heroku
-- Server Reload -> Nodemon reload, automatically
+Motivo do desenvolvimento da API é disponibilizar a desenvolvedores Front End um servidor e banco de dados configurado para testes de conexão e de visualização dos dados agilizando o processo de desenvolvimento a API fornece via requisições AJAX métodos http para coletar, inserir e alterar dados.
 
-## Folders
+## Rotas
 
-- Routes ```./app/routes```
-- Models ```./app/models```
-- API ```./app/api```
-- Config Express ```./config/express.js```
-- Config Database ```./config/database.js```
-- Server ```./server.js```
+| url | collection | método | parâmetros | retorno | ação |
+| ------ | ------ | ------ | ------ |
+| https://api-rest-node-herokuapp.com/list/projects | projects | get | Não Possui | JSON com Array | Pega lista de projetos no banco |
+| https://api-rest-node-herokuapp.com/create/project | projects | post | JSON | JSON | adiciona JSON ao banco |
+| https://api-rest-node-herokuapp.com/update/project/:id | projects | put | id, JSON | atualiza o documento com dados do JSON enviado |
+| https://api-rest-node-herokuapp.com/select/project/:id | projects | get | id | JSON | retorna o documento com id enviado |
+| https://api-rest-node-herokuapp.com/delete/project/:id | projects | delete | id | status 200 | Apaga o documento com id enviado |
+	
+## Collections
 
-## Project Environment Installation
+#### Schema Project (projects)
 
-### NodeJS
+| nome | descrição | type |
+| ------ | ------ | ------ | 
+| project | nome do projeto | String |
+| technologies | tecnologias do projeto | String |
+| description | descrição do projeto | String |
+| demoLink | link de demonstração | String |
+| githubLink | link GitHub | String |
+| author | nome do autor | String |
+| authorLink | link do autor (website, linkedin) | String |
+| project | nome do projeto | String |
+| status | status do projeto (Desenvolvimento / Produção) | String |
 
-- Download and install NodeJS <a href="https://nodejs.org/en/" target="_blank">nodejs.org</a>.
+## API
 
-### MongoDB 
+| Tecnologia | Descrição | Link |
+| ------ | ------ | ------ |
+| Heroku | Cloud Platform | [heroku.com] |
+| Heroku mLab Dyno | Servidor do Banco de Dados MongoDB | [mlab.com] |
+| GitHub | Versionamento | [github.com] |
+| Nodemon | server reload, automatically | [nodemon.com] |
 
-- Install with Homebrew <code>/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</code>.
-- Update Homebew <code>brew update</code> 
-- Install MongoDB <code>brew install mongodb</code>.
-- Em alguns casos precisamos usar o comando como sudo para criação da pasta db no terminal <code>sudo mkdir -p /data/db</code> e mudar a permissão de acesso usando linha de comando <code>sudo chmod 777 /data/db</code>.
-- Então para iniciar o MongoDB basta usar o comando <code>mongod</code>.
+## Diretórios da API
 
-## Project
+- Rotas ```./app/routes```
+- Modelos ```./app/models```
+- Api ```./app/api```
+- Configuração do Express ```./config/express.js```
+- Configuração Database ```./config/database.js```
+- Servidor ```./server.js```
+
+## Configurando a API localmente
 
 - Download or clone the project access the project folder with the terminal and execute the CLI <code>npm install</code>.
 - Run the server <code>npm start</code> (Nodemon)
 - Access in your browser <a href="http://localhost:3000">http://localhost:3000</a>
 
-#### Sample with Ionic 1.x (AngularJS 1.x) using a service
-
-<code>
-angular.module('starter')
-  .service('services', function($http, $ionicPopup, $rootScope, $state){
-
-    var url = 'https://hackathon-mvp.herokuapp.com';
-
-    return {
-      
-  /* =============== ===== ===================*/
-  /* =============== LOGIN ===================*/
-  /* =============== ===== ===================*/
-
-      realizarLogin : function(dadosUsuario){
-        
-        $http.post(
-          url + '/login', 
-          {
-            email: dadosUsuario.email,
-            password: dadosUsuario.password
-          }
-        )
-        .then(
-          function (response) {
-            $rootScope.usuario = response.data;
-            $state.go('app.lista');
-          }, 
-          function (error) {
-            console.log(error);
-            $ionicPopup.alert({
-              title : 'Atenção!',
-              template : 'Email ou senha incorretos!'
-            });
-          }
-        );
-      },
-
-  /* =============== ===== ===================*/
-  /* =============== LISTA ===================*/
-  /* =============== ===== ===================*/
-
-      obterLista : function(){
-        return $http.get(url + '/list/mvpData').then(function(response){
-          return response.data;
-        });
-      }, 
-
-  /* =============== =============== ===================*/
-  /* =============== ATUALIZAR DADOS ===================*/
-  /* =============== =============== ===================*/
-
-      atualizarDados : function(dados){
-        return $http.post(url + "/update/mvpData/"+ dados._id , dados).then(
-          function(response){
-            $state.go('app.lista');
-          });
-      },
-
-  /* =============== ====================== ===================*/
-  /* =============== ATUALIZAR DADOS PERFIL ===================*/
-  /* =============== ====================== ===================*/
-
-      atualizarDadosPerfil : function(dados){
-        return $http.post(url + "/update/user/"+ dados.user_id , dados).then(
-          function(response){
-            
-          });
-      },
-
-  /* =============== ================ ===================*/
-  /* =============== SALVAR NOVO DADO ===================*/
-  /* =============== ================ ===================*/
-
-      salvarDados : function(dados){
-        return $http.post(url + "/create/mvpData", dados).then(
-          function(response){
-            $state.go('app.lista');
-          });
-      },
-
-  /* =============== ============= ===================*/
-  /* =============== DELETAR DADOS ===================*/
-  /* =============== ============= ===================*/
-
-      deletarDados : function(dados){
-        return $http.delete(url + "/delete/mvpData/" + dados._id).then(
-          function(response){
-            $state.go($state.current, {}, {reload: true});
-          });
-      },
-    }
-  });
-</code>
-
-## Dependencies
+## Dependencias da API
 
 - Dependency express - <a href="https://www.npmjs.com/package/express">https://www.npmjs.com/package/express</a>
 - Dependency body-parser - <a href="https://www.npmjs.com/package/body-parser">https://www.npmjs.com/package/body-parser</a>

@@ -5,6 +5,12 @@ module.exports = function (app){
 	app.post('/login', api.login);
   app.post('/createUser', api.createUser);
 
-  // app.use('/*', api.verificaToken); // Verificar após autenticação ordem necessária e aplicando a qualquer verbo http com use
-  
+  /**
+   * 
+   * PT: rota para autenticar o usuário usando Json Web Token
+   * EN: route to authenticate the user using Json Web Token
+   * 
+   * app.use('/*', api.verifyToken);  
+   */
+
 };

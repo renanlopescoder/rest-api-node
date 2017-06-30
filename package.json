@@ -1,10 +1,9 @@
 {
-  "name": "node_rest_api",
+  "name": "rest_api_node",
   "version": "1.0.0",
   "description": "NodeJS REST API is a open code NodeJS Back End API",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon ./server"
   },
   "author": "Renan Lopes",
@@ -14,7 +13,7 @@
     "body-parser": "^1.15.2",
     "cors": "^2.8.3",
     "express": "^4.14.0",
-    "express-load": "*",
+    "express-load": "^1.1.16",
     "jsonwebtoken": "^7.2.1",
     "mongoose": "^4.7.1"
   },

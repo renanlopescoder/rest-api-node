@@ -5,19 +5,15 @@ app.use(bodyParser.json());
 var load = require('express-load');
 var cors = require('cors');
 
-//Configurações do Express
-
 app.use(cors({origin: '*'}));
 
-//Midleware Static
-	app.set('secret', 'opensecret');
-	app.use(express.static('./public')); // aplicando
+app.set('secret', 'opensecret');
 
-	load('app/models') // Irá carregar os modelos como no hibernate
+load('app/models')
 	.then('app/api')
 	.then('app/routes/auth.js')
 	.then('app/routes')
 	.into(app);
 
-	module.exports = app; // tornar publico
+	module.exports = app;
 

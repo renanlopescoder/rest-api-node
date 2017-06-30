@@ -1,30 +1,38 @@
 var mongoose = require('mongoose');
 
 var schema = mongoose.Schema({
-	nickname: {
+	project: {
 		type: String,
 		required: false
 	},
-	name: {
+	technologies: {
 		type: String,
 		required: false
 	},
-	email: {
+	description: {
 		type: String,
 		required: false
 	},
-	team: {
+	demoLink: {
 		type: String,
 		required: false
 	},
-	hackathon: {
+	githubLink: {
 		type: String,
 		required: false
 	},
-	active: {
+	author: {
+		type: String,
+		required: false
+	},
+	authorLink: {
+		type: String,
+		required: false
+	},
+	status: {
 		type: String,
 		required: false
 	} 
 });
 
-mongoose.model('Data', schema);
+mongoose.model('Project', schema);

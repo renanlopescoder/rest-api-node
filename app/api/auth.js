@@ -69,27 +69,28 @@
     });
   };
 
-  // api.verificaToken = (req, res, next) => {
-  //   let token = req.get('Autorization');
-  //     if(token) {
-  //       console.log('Verificando Token');
-  //       jwt.verify(
-  //         token, 
-  //         app.get('secret'), 
-  //         (error, decoded) => {
-  //           if(error) {
-  //             console.log('Token Rejeitado');
-  //             res.sendStatus(401);
-  //           }
-  //           req.user = decoded;
-  //           console.log('Usuario aprovado');
-  //           next();
-  //         }
-  //       );
-  //     } else {
-  //       console.log('Token não enviado');
-  //       res.sendStatus(401);
-  //     }
-  // };
+  api.verifyToken = (req, res, next) => {
+    let token = req.get('Autorization');
+      if(token) {
+        console.log('Verificando Token');
+        jwt.verify(
+          token, 
+          app.get('secret'), 
+          (error, decoded) => {
+            if(error) {
+              console.log('Token Rejeitado');
+              res.sendStatus(401);
+            }
+            req.user = decoded;
+            console.log('Usuario aprovado');
+            next();
+          }
+        );
+      } else {
+        console.log('Token não enviado');
+        res.sendStatus(401);
+      }
+  };
+
   return api;
 };
