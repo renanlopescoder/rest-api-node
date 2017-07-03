@@ -29,9 +29,8 @@ api.searchById = function(req,res){
 	model
 		.findById(req.params.id)
 		.then(function(id){
-			if(!id) throw Error("Não encontrada");
 
-			res.json(dadoEncontrado);
+			res.json(id);
 
 		}, function(error){
 		console.log(error);
