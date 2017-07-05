@@ -8,6 +8,12 @@ Api desenvolvida em NodeJS, Express e MongoDB para teste de aplicações Front E
 
 Motivo do desenvolvimento da API é disponibilizar a desenvolvedores Front End um servidor e banco de dados configurado para testes de conexão e de visualização dos dados agilizando o processo de desenvolvimento a API fornece via requisições AJAX métodos http para coletar, inserir e alterar dados.
 
+### Showcase
+
+| Aplicação | Código (GitHub) |
+| ------ | ------ |
+|https://typescript-angular4.herokuapp.com/ | https://github.com/renanlopescoder/typescript-angular4 |
+
 ## Rotas
 
 | url | collection | método | parâmetros | retorno | ação |
