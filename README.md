@@ -2,77 +2,77 @@
 
 ## Api Rest Node
 
-Api desenvolvida em NodeJS, Express e MongoDB para teste de aplicações Front End.
+Api developed in NodeJS, Express and MongoDB for testing Front End applications.
 
-### Descrição
+### Description
 
-Motivo do desenvolvimento da API é disponibilizar a desenvolvedores Front End um servidor e banco de dados configurado para testes de conexão e de visualização dos dados agilizando o processo de desenvolvimento a API fornece via requisições AJAX métodos http para coletar, inserir e alterar dados.
+Reason for the development of the API is to provide the Front End developers with a server and database configured for connection testing and visualization of the data streamlining the development process the API provides via AJAX requests http methods to collect, insert and change data.
 
 ### Showcase
 
-| Aplicação | Código (GitHub) |
+| Application | Code (GitHub) |
 | ------ | ------ |
-|https://typescript-angular4.herokuapp.com/ | https://github.com/renanlopescoder/typescript-angular4 |
+| https: //typescript-angular4.herokuapp.com/ | https://github.com/renanlopescoder/typescript-angular4 |
 
-## Rotas
+## Routes
 
-| url | collection | método | parâmetros | retorno | ação |
-| ------ | ------ | ------ | ------ | ------ | ------ | 
-| https://rest-api-node.herokuapp.com/list/projects | projects | get | Não Possui | JSON com Array | Pega lista de projetos no banco |
-| https://rest-api-node.herokuapp.com/create/project | projects | post | JSON | JSON | adiciona JSON ao banco |
-| https://rest-api-node.herokuapp.com/update/project/:id | projects | put | id, JSON | atualiza o documento com dados do JSON enviado |
-| https://rest-api-node.herokuapp.com/select/project/:id | projects | get | id | JSON | retorna o documento com id enviado |
-| https://rest-api-node.herokuapp.com/delete/project/:id | projects | delete | id | status 200 | Apaga o documento com id enviado |
-	
+| url | collection | method | parameters | return | action |
+| ------ | ------ | ------ | ------ | ------ | ------ |
+| https://rest-api-node.herokuapp.com/list/projects | projects | get | Do not Own | JSON with Array | Get list of projects in the bank |
+| https://rest-api-node.herokuapp.com/create/project | projects | post | JSON | JSON | adds JSON to bank |
+| https://rest-api-node.herokuapp.com/update/project/:id | projects | put | id, JSON | to update document with JSON data sent |
+| https://rest-api-node.herokuapp.com/select/project/:id | projects | get | id | JSON | returns document with sent id |
+| https://rest-api-node.herokuapp.com/delete/project/:id | projects | delete | id | status 200 | Delete the document with sent ID |
+
 ## Collections
 
 #### Schema Project (projects)
 
-| nome | descrição | type |
-| ------ | ------ | ------ | 
-| project | nome do projeto | String |
-| technologies | tecnologias do projeto | String |
-| description | descrição do projeto | String |
-| demoLink | link de demonstração | String |
+| name | description | type |
+| ------ | ------ | ------ |
+| project | project name | String |
+| technologies | design technologies | String |
+| description | project description | String |
+| demoLink | demo link | String |
 | githubLink | link GitHub | String |
-| author | nome do autor | String |
-| authorLink | link do autor (website, linkedin) | String |
-| project | nome do projeto | String |
-| status | status do projeto (Desenvolvimento / Produção) | String |
+| author | Name of author | String |
+| authorLink | author link (website, linkedin) | String |
+| project | project name | String |
+| status | project status (Development / Production) | String |
 
 ## API
 
-| Tecnologia | Descrição | Link |
+| Contact Us | Description | Link |
 | ------ | ------ | ------ |
 | Heroku | Cloud Platform | [heroku.com] |
-| Heroku mLab Dyno | Servidor do Banco de Dados MongoDB | [mlab.com] |
-| GitHub | Versionamento | [github.com] |
+| Heroku mLab Dyno | MongoDB Database Server | [mlab.com] |
+| GitHub | Versioning | [github.com] |
 | Nodemon | server reload, automatically | [nodemon.com] |
 
-## Diretórios da API
+## API Directories
 
-- Rotas ```./app/routes```
-- Modelos ```./app/models```
-- Api ```./app/api```
-- Configuração do Express ```./config/express.js```
-- Configuração Database ```./config/database.js```
-- Servidor ```./server.js```
+- Routes `` `/ app / routes```
+- Models `` `/ app / models```
+- Api `` `/ app / api```
+- Configuration of Express `` `. / Config / express.js```
+- Configuration Database `` `. / Config / database.js```
+- Server `` `./server.js```
 
-## Configurando a API localmente
+## Configuring the API Locally
 
-- Download or clone the project access the project folder with the terminal and execute the CLI <code>npm install</code>.
-- Run the server <code>npm start</code> (Nodemon)
-- Access in your browser <a href="http://localhost:3000">http://localhost:3000</a>
+- Download or clone the project to access the project folder with the terminal and execute the CLI <code> npm install </ code>.
+- Run the server <code> npm start </ code> (Nodemon)
+- Access in your browser <a href="http://localhost:3000"> http: // localhost: 3000 </a>
 
-## Dependencias da API
+## API Dependencies
 
-- Dependency express - <a href="https://www.npmjs.com/package/express">https://www.npmjs.com/package/express</a>
-- Dependency body-parser - <a href="https://www.npmjs.com/package/body-parser">https://www.npmjs.com/package/body-parser</a>
-- Dependency cors - <a href="https://www.npmjs.com/package/cors">https://www.npmjs.com/package/cors</a>
-- Dependency express-load - <a href="https://www.npmjs.com/package/express-load">https://www.npmjs.com/package/express-load</a>
-- Dependency Nodemon - <a href="https://nodemon.io/">https://nodemon.io/</a> 
+- Dependency express - <a href="https://www.npmjs.com/package/express"> https://www.npmjs.com/package/express </a>
+- Dependency body-parser - <a href="https://www.npmjs.com/package/body-parser"> https://www.npmjs.com/package/body-parser </a>
+- Dependency cors - <a href="https://www.npmjs.com/package/cors"> https://www.npmjs.com/package/cors </a>
+- Dependency express-load - <a href="https://www.npmjs.com/package/express-load"> https://www.npmjs.com/package/express-load </a>
+- Dependency Nodemon - <a href="https://nodemon.io/"> https://nodemon.io/ </a>
 
-By: <a href="http://renanlopes.com">Renan Lopes</a>
+By: <a href="http://renanlopes.com"> Renan Lopes </a>
 
 [heroku.com]: <https://www.heroku.com>
 [mlab.com]: <https://mlab.com>
