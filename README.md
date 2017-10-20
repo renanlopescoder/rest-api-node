@@ -1,70 +1,71 @@
-![NodeJS logo](http://cfile10.uf.tistory.com/image/1973644A5149370931E7E6)
+﻿![NodeJS logo](http://cfile10.uf.tistory.com/image/1973644A5149370931E7E6)
 
-## Api Rest Node
+## Rest API Node
 
-Api desenvolvida em NodeJS, Express e MongoDB para teste de aplicações Front End.
+Api developed in NodeJS, Express and MongoDB for test of application Front End.
 
-### Descrição
+### Description
 
-Motivo do desenvolvimento da API é disponibilizar a desenvolvedores Front End um servidor e banco de dados configurado para testes de conexão e de visualização dos dados agilizando o processo de desenvolvimento a API fornece via requisições AJAX métodos http para coletar, inserir e alterar dados.
+This API is developed to provide Front End developers with a server and database configurations for connection testing and to provide a visualization of the data streamlining for the development process.
+The API provides HTTP methods via AJAX requests to collect, insert and update the given data.
 
 ### Showcase
 
-| Aplicação | Código (GitHub) |
+| Application | Code (GitHub) |
 | ------ | ------ |
 |https://typescript-angular4.herokuapp.com/ | https://github.com/renanlopescoder/typescript-angular4 |
 
-## Rotas
+## Routes
 
-| url | collection | método | parâmetros | retorno | ação |
+| URL | Collection | Method | Parameters | Response | Action |
 | ------ | ------ | ------ | ------ | ------ | ------ | 
-| https://rest-api-node.herokuapp.com/list/projects | projects | get | Não Possui | JSON com Array | Pega lista de projetos no banco |
-| https://rest-api-node.herokuapp.com/create/project | projects | post | JSON | JSON | adiciona JSON ao banco |
-| https://rest-api-node.herokuapp.com/update/project/:id | projects | put | id, JSON | atualiza o documento com dados do JSON enviado |
-| https://rest-api-node.herokuapp.com/select/project/:id | projects | get | id | JSON | retorna o documento com id enviado |
-| https://rest-api-node.herokuapp.com/delete/project/:id | projects | delete | id | status 200 | Apaga o documento com id enviado |
+| https://rest-api-node.herokuapp.com/list/projects | projects | get | Nothing | JSON with Array | Get a list of projects in the database |
+| https://rest-api-node.herokuapp.com/create/project | projects | post | JSON | JSON | Add JSON into the database |
+| https://rest-api-node.herokuapp.com/update/project/:id | projects | put | id, JSON | Update the document with sent JSON data |
+| https://rest-api-node.herokuapp.com/select/project/:id | projects | get | id | JSON | Return the document, related to the sent id |
+| https://rest-api-node.herokuapp.com/delete/project/:id | projects | delete | id | status 200 | Delete the document, related to the sent id |
 	
 ## Collections
 
 #### Schema Project (projects)
 
-| nome | descrição | type |
+| Name | Description | Type |
 | ------ | ------ | ------ | 
-| project | nome do projeto | String |
-| technologies | tecnologias do projeto | String |
-| description | descrição do projeto | String |
-| demoLink | link de demonstração | String |
-| githubLink | link GitHub | String |
-| author | nome do autor | String |
-| authorLink | link do autor (website, linkedin) | String |
-| project | nome do projeto | String |
-| status | status do projeto (Desenvolvimento / Produção) | String |
+| project | project name | String |
+| technologies | project technologies | String |
+| description | project description  | String |
+| demoLink | demo link | String |
+| githubLink | GitHub link | String |
+| author | author's name | String |
+| authorLink | links to author (website, linkedin) | String |
+| project | project name | String |
+| status | project status (Development / Production) | String |
 
 ## API
 
-| Tecnologia | Descrição | Link |
+| Technology | Description | Link |
 | ------ | ------ | ------ |
 | Heroku | Cloud Platform | [heroku.com] |
-| Heroku mLab Dyno | Servidor do Banco de Dados MongoDB | [mlab.com] |
-| GitHub | Versionamento | [github.com] |
+| Heroku mLab Dyno | MongoDB database server | [mlab.com] |
+| GitHub | Version Controlling | [github.com] |
 | Nodemon | server reload, automatically | [nodemon.com] |
 
-## Diretórios da API
+## API Directories
 
-- Rotas ```./app/routes```
-- Modelos ```./app/models```
-- Api ```./app/api```
-- Configuração do Express ```./config/express.js```
-- Configuração Database ```./config/database.js```
-- Servidor ```./server.js```
+- Routes ```./app/routes```
+- Models ```./app/models```
+- API ```./app/api```
+- Configurations of Express ```./config/express.js```
+- Database configurations ```./config/database.js```
+- Server configurations ```./server.js```
 
-## Configurando a API localmente
+## Configuring the API locally 
 
 - Download or clone the project access the project folder with the terminal and execute the CLI <code>npm install</code>.
 - Run the server <code>npm start</code> (Nodemon)
 - Access in your browser <a href="http://localhost:3000">http://localhost:3000</a>
 
-## Dependencias da API
+## API Dependencies
 
 - Dependency express - <a href="https://www.npmjs.com/package/express">https://www.npmjs.com/package/express</a>
 - Dependency body-parser - <a href="https://www.npmjs.com/package/body-parser">https://www.npmjs.com/package/body-parser</a>
