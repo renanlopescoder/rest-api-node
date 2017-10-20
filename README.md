@@ -2,7 +2,7 @@
 
 ## Rest API Node
 
-Api developed in NodeJS, Express and MongoDB for test of application Front End.
+Api developed in NodeJS, Express and MongoDB to test application Front End.
 
 ### Description
 
