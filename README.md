@@ -14,6 +14,8 @@ The API provides HTTP methods via AJAX requests to collect, insert and update th
 | Application | Code (GitHub) |
 | ------ | ------ |
 |https://typescript-angular4.herokuapp.com/ | https://github.com/renanlopescoder/typescript-angular4 |
+|http://mobx-react.herokuapp.com/ | https://github.com/renanlopescoder/mobx-react |
+
 
 ## Routes
 
