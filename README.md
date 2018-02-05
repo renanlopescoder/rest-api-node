@@ -15,6 +15,7 @@ Application in Node, Express, MongoDB and PM2 to give support to Front End devel
 
 ## Routes
 
+#### Projects
 | URL | Collection | Method | Parameters | Response | Action |
 | ------ | ------ | ------ | ------ | ------ | ------ |
 | https://rest-api-node.herokuapp.com/projects | projects | get | Nothing | JSON with Array | Get a list of projects in the database |
@@ -22,6 +23,10 @@ Application in Node, Express, MongoDB and PM2 to give support to Front End devel
 | https://rest-api-node.herokuapp.com/projects/update/:id | projects | put | id, JSON | Update the document with sent JSON data |
 | https://rest-api-node.herokuapp.com/projects/select/:id | projects | get | id | JSON | Return the document, related to the sent id |
 | https://rest-api-node.herokuapp.com/projects/delete/:id | projects | delete | id | status 200 | Delete the document, related to the sent id |
+
+#### Users
+| URL | Collection | Method | Parameters | Response | Action |
+| ------ | ------ | ------ | ------ | ------ | ------ |
 | https://rest-api-node.herokuapp.com/users | users | get | Nothing | JSON with Array | Get a list of users in the database |
 | https://rest-api-node.herokuapp.com/users/create | users | post | JSON | JSON | Add JSON into the database |
 | https://rest-api-node.herokuapp.com/users/update/:id | users | put | id, JSON | Update the document with sent JSON data |
