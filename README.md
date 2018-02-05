@@ -1,13 +1,9 @@
-﻿![NodeJS logo](http://cfile10.uf.tistory.com/image/1973644A5149370931E7E6)
+﻿
+![NodeJS logo](https://raw.githubusercontent.com/altairstudios/nodeserver/master/nodeserver-logo.png)
 
-## Rest API Node
+## Node API
 
-Api developed in NodeJS, Express and MongoDB to test application Front End.
-
-### Description
-
-This API is developed to provide Front End developers with a server and database configurations for connection testing and to provide a visualization of the data streamlining for the development process.
-The API provides HTTP methods via AJAX requests to collect, insert and update the given data.
+Application in Node, Express, MongoDB and PM2 to give support to Front End development, this application serving a bunch of AJAX requests to give and manipulate data from database.
 
 ### Showcase
 
