@@ -84,7 +84,7 @@ Application in Node, Express, MongoDB and PM2 to give support to Front End devel
 - Dependency body-parser - <a href="https://www.npmjs.com/package/body-parser">https://www.npmjs.com/package/body-parser</a>
 - Dependency cors - <a href="https://www.npmjs.com/package/cors">https://www.npmjs.com/package/cors</a>
 - Dependency express-load - <a href="https://www.npmjs.com/package/express-load">https://www.npmjs.com/package/express-load</a>
-- Dependency Nodemon - <a href="https://nodemon.io/">https://nodemon.io/</a>
+- Dependency PM2 - <a href="http://pm2.keymetrics.io/">http://pm2.keymetrics.io/</a>
 
 By: <a href="http://renanlopes.com">Renan Lopes</a>
 
