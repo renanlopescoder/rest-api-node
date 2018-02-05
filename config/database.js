@@ -1,27 +1,27 @@
 /**
  * Configuração base de dados / Database Configuration
- * 
+ *
  * Português / English
- * 
+ *
  * 	Host: Heroku mLab
  * 	Database Type: MongoDB
  * 	Database Name: heroku_jwprwsr5
  * 	User: renanlopes
  * 	Password: renanlopescoder
- * 
+ *
  * 	PT: Configuração de base de dados local
  *  EN: Configuration of local database
  * 		mongoose.connect('mongodb://localhost/databaseName');
- * 
+ *
  */
 
 	let mongoose = require('mongoose');
 
 	mongoose.Promise = global.Promise;
 
-	mongoose.connect('mongodb://renanlopes:renanlopescoder@ds145312.mlab.com:45312/heroku_jwprwsr5');
+	mongoose.connect('mongodb://renanlopes:renanlopescoder@ds145312.mlab.com:45312/heroku_jwprwsr5', { useMongoClient: true });
 
-/** 
+/**
  * PT: Função para imprimir no console se a conxão com o banco foi efetuada
  * EN: Function to print in console if the database connection was a success
  */

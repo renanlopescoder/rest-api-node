@@ -20,19 +20,24 @@ The API provides HTTP methods via AJAX requests to collect, insert and update th
 ## Routes
 
 | URL | Collection | Method | Parameters | Response | Action |
-| ------ | ------ | ------ | ------ | ------ | ------ | 
-| https://rest-api-node.herokuapp.com/list/projects | projects | get | Nothing | JSON with Array | Get a list of projects in the database |
-| https://rest-api-node.herokuapp.com/create/project | projects | post | JSON | JSON | Add JSON into the database |
-| https://rest-api-node.herokuapp.com/update/project/:id | projects | put | id, JSON | Update the document with sent JSON data |
-| https://rest-api-node.herokuapp.com/select/project/:id | projects | get | id | JSON | Return the document, related to the sent id |
-| https://rest-api-node.herokuapp.com/delete/project/:id | projects | delete | id | status 200 | Delete the document, related to the sent id |
-	
+| ------ | ------ | ------ | ------ | ------ | ------ |
+| https://rest-api-node.herokuapp.com/projects | projects | get | Nothing | JSON with Array | Get a list of projects in the database |
+| https://rest-api-node.herokuapp.com/projects/create | projects | post | JSON | JSON | Add JSON into the database |
+| https://rest-api-node.herokuapp.com/projects/update/:id | projects | put | id, JSON | Update the document with sent JSON data |
+| https://rest-api-node.herokuapp.com/projects/select/:id | projects | get | id | JSON | Return the document, related to the sent id |
+| https://rest-api-node.herokuapp.com/projects/delete/:id | projects | delete | id | status 200 | Delete the document, related to the sent id |
+| https://rest-api-node.herokuapp.com/users | users | get | Nothing | JSON with Array | Get a list of users in the database |
+| https://rest-api-node.herokuapp.com/users/create | users | post | JSON | JSON | Add JSON into the database |
+| https://rest-api-node.herokuapp.com/users/update/:id | users | put | id, JSON | Update the document with sent JSON data |
+| https://rest-api-node.herokuapp.com/users/select/:id | users | get | id | JSON | Return the document, related to the sent id |
+| https://rest-api-node.herokuapp.com/users/delete/:id | users | delete | id | status 200 | Delete the document, related to the sent id |
+
 ## Collections
 
 #### Schema Project (projects)
 
 | Name | Description | Type |
-| ------ | ------ | ------ | 
+| ------ | ------ | ------ |
 | project | project name | String |
 | technologies | project technologies | String |
 | description | project description  | String |
@@ -43,6 +48,16 @@ The API provides HTTP methods via AJAX requests to collect, insert and update th
 | project | project name | String |
 | status | project status (Development / Production) | String |
 
+#### Schema User (users)
+
+| Name | Description | Type |
+| ------ | ------ | ------ |
+| username | user name | String |
+| password | user password (hash) | String |
+| email | user mail  | String |
+| photo | user photo | String |
+| nickname | user nickname | String |
+
 ## API
 
 | Technology | Description | Link |
@@ -50,18 +65,18 @@ The API provides HTTP methods via AJAX requests to collect, insert and update th
 | Heroku | Cloud Platform | [heroku.com] |
 | Heroku mLab Dyno | MongoDB database server | [mlab.com] |
 | GitHub | Version Controlling | [github.com] |
-| Nodemon | server reload, automatically | [nodemon.com] |
+| PM2 | server reload, automatically | [pm2.com] |
 
 ## API Directories
 
-- Routes ```./app/routes```
-- Models ```./app/models```
-- API ```./app/api```
+- Routes ```./src/routes```
+- Models ```./src/models```
+- Actions ```./src/actions```
 - Configurations of Express ```./config/express.js```
 - Database configurations ```./config/database.js```
 - Server configurations ```./server.js```
 
-## Configuring the API locally 
+## Configuring the API locally
 
 - Download or clone the project access the project folder with the terminal and execute the CLI <code>npm install</code>.
 - Run the server <code>npm start</code> (Nodemon)
@@ -73,11 +88,11 @@ The API provides HTTP methods via AJAX requests to collect, insert and update th
 - Dependency body-parser - <a href="https://www.npmjs.com/package/body-parser">https://www.npmjs.com/package/body-parser</a>
 - Dependency cors - <a href="https://www.npmjs.com/package/cors">https://www.npmjs.com/package/cors</a>
 - Dependency express-load - <a href="https://www.npmjs.com/package/express-load">https://www.npmjs.com/package/express-load</a>
-- Dependency Nodemon - <a href="https://nodemon.io/">https://nodemon.io/</a> 
+- Dependency Nodemon - <a href="https://nodemon.io/">https://nodemon.io/</a>
 
 By: <a href="http://renanlopes.com">Renan Lopes</a>
 
 [heroku.com]: <https://www.heroku.com>
 [mlab.com]: <https://mlab.com>
 [github.com]: <https://www.github.com>
-[nodemon.com]: <https://nodemon.io/>
+[pm2.com]: <http://pm2.keymetrics.io/>

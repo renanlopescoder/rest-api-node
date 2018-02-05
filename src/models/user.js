@@ -1,8 +1,6 @@
 var mongoose = require('mongoose');
 
-//Função construtora criando Schema usando banco orientado a documento
 var schema = mongoose.Schema({
-	//Atributos do documento
 	username: {
 		type: String,
 		required: true
@@ -24,7 +22,5 @@ var schema = mongoose.Schema({
 		required: false
 	}
 });
-
-//Compilando schema
 
 mongoose.model('User', schema);

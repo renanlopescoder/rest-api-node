@@ -1,10 +1,10 @@
 {
   "name": "rest_api_node",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "NodeJS REST API is a open code NodeJS Back End API",
-  "main": "server.js",
   "scripts": {
-    "start": "nodemon ./server"
+    "dev": "pm2 start server.js --watch",
+    "start": "node ./node_modules/.bin/pm2 start server.js"
   },
   "author": "Renan Lopes",
   "license": "MIT",
@@ -16,12 +16,10 @@
     "express-load": "^1.1.16",
     "jsonwebtoken": "^7.2.1",
     "mongoose": "^4.7.1",
-    "nodemailer": "^4.2.0"
+    "nodemailer": "^4.2.0",
+    "pm2": "^2.9.3"
   },
   "engines": {
     "node": "7.10.1"
-  },
-  "devDependencies": {
-    "nodemon": "^1.11.0"
   }
 }

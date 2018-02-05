@@ -1,10 +1,9 @@
-var http = require('http');
-var server = require('./config/express');
+const http = require('http');
+const server = require('./config/express');
 require('./config/database');
 
-var port =  process.env.PORT || 3000;
+const PORT =  process.env.PORT || 3000;
 
-server.listen(port, function(){
+server.listen(PORT, () => {
 	console.log('Servidor Iniciado');
-}); 
-
+});

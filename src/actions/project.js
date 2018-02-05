@@ -1,19 +1,19 @@
-var mongoose = require('mongoose');
-var api = {};
+const mongoose = require('mongoose');
+const model = mongoose.model('Project');
 
-let model = mongoose.model('Project');
+let actions = {};
 
-api.list = function (req, res){
+actions.list = function (req, res){
 	model.find({},function(error, list){
 		if(error){
 			res.status(500).json(error);
 		}
 		res.json(list);
-	}); 
+	});
 
 };
 
-api.create = function(req, res){
+actions.create = function(req, res){
 	model
 		.create(req.body).then(function(dados){
 		res.json(dados);
@@ -24,7 +24,7 @@ api.create = function(req, res){
 
 };
 
-api.searchById = function(req,res){
+actions.searchById = function(req,res){
 
 	model
 		.findById(req.params.id)
@@ -36,10 +36,10 @@ api.searchById = function(req,res){
 		console.log(error);
 		res.status(404).json(error);
 	});
-	
+
 };
 
-api.deleteById = function(req,res){
+actions.deleteById = function(req,res){
 	model.remove({_id: req.params.id})
 	.then(function(){
 		res.sendStatus(200);
@@ -50,12 +50,12 @@ api.deleteById = function(req,res){
 
 };
 
-api.update = function(req,res){
+actions.update = function(req,res){
  console.log(req.body);
 	model
 		.findByIdAndUpdate(req.params.id, req.body)
 		.then(function(dado){
-			
+
 			res.json(dado);
 
 		}, function(error){
@@ -65,7 +65,4 @@ api.update = function(req,res){
 
 };
 
-
-
-
-module.exports = api;
+module.exports = actions;

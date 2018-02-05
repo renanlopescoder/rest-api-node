@@ -1,81 +1,68 @@
-  let mongoose =  require('mongoose');
-  let bcrypt = require('bcrypt');
-  const saltRounds = 15;
-  let jwt = require('jsonwebtoken');
+const mongoose =  require('mongoose');
+const bcrypt = require('bcrypt');
+const saltRounds = 15;
+const jwt = require('jsonwebtoken');
+const model = mongoose.model('User');
 
 /**
  * Auth API para gerenciamento de autenticação de usuários
- * 
+ *
  * Requires: Json Web Token, simple-encryptor, bcrypt e mongoose
  * @description simple-encrytor usado para criptografar dados do usuário em localStorage e Json Web Token para autenticação do usuário no sistema.
- *  
+ *
  * Modelo: user.js
  * Nome: User
  * Collection no MongoDB: users
  * Atualização: EcmaScript 6
  * Conceitos Aplicados: Criptografia unidirecional e bidirecional Arrow Functions e Variáveis com Escopo de Bloco.
- * 
+ *
  */
 
+module.exports = (app) => {
 
-  module.exports = (app) => {
+  let actions = {};
 
-  let api = {};
-  let model = mongoose.model('User');
-
-  api.login = function(req, res){
-    model.findOne({email: req.body.email})
+  actions.login = (req, res) => {
+    model.findOne({ email: req.body.email })
     .then(
       (user) => {
-        bcrypt.compare(req.body.password, user.password).then(function(result){
-          if(result == true){
-            var token = jwt.sign({user:user.username}, app.get('secret'),{
+        const password = req.body.password;
+        const hash = user.password;
+        bcrypt.compare(password, hash, (error, success) => {
+          if (error) {
+            console.log('Error, password mismatch with user ' + user.username);
+            res.sendStatus(401);
+          } else if (success) {
+            var token = jwt.sign({ user: user.username }, app.get('secret'),{
               expiresIn: 84600
             });
             return res.status(200).json(
               {
                 user_id: user._id,
                 nickname : user.nickname,
-                username: user.username,                
+                username: user.username,
                 photo : user.photo,
                 email : user.email,
-                token: token
-              });
-          }
-        }, 
-        (error) => {
-          console.log('Error, password incorreto para o usuário ' + user.username);
-          res.sendStatus(401);        
+                token: token,
+              }
+            );
+          };
         });
       },
       (error) => {
-        console.log('Error, usuário inexistente');
+        console.log('Error, user does not exists');
         res.sendStatus(401);
-      })
-    };
-
-
-  api.createUser = (req,res) => {
-    bcrypt.hash(req.body.password, saltRounds, (err,hash) => {
-      req.body.password = hash;
-      model.create(req.body).then(
-        (user)=> {
-          res.json(user);
-        },
-        (error) => {
-          console.log(error);
-          res.status(404).json(error);
-      });
-    });
+      }
+    )
   };
 
-  api.verifyToken = (req, res, next) => {
+  actions.verifyToken = (req, res, next) => {
     let token = req.get('Autorization');
       if(token) {
         console.log('Verificando Token');
         jwt.verify(
-          token, 
-          app.get('secret'), 
+          token,
+          app.get('secret'),
           (error, decoded) => {
             if(error) {
               console.log('Token Rejeitado');
@@ -92,5 +79,5 @@
       }
   };
 
-  return api;
+  return actions;
 };

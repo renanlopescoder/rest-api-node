@@ -1,19 +1,17 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var app = express();
-app.use(bodyParser.json());
-var load = require('express-load');
-var cors = require('cors');
+const express = require('express');
+const bodyParser = require('body-parser');
+const load = require('express-load');
+const cors = require('cors');
+const server = express();
 
-app.use(cors({origin: '*'}));
+server.use(bodyParser.json());
+server.set('secret', 'opensecret');
+server.use(cors({ origin: '*' }));
 
-app.set('secret', 'opensecret');
+load('src/models')
+	.then('src/actions')
+	.then('src/routes/auth.js')
+	.then('src/routes')
+	.into(server);
 
-load('app/models')
-	.then('app/api')
-	.then('app/routes/auth.js')
-	.then('app/routes')
-	.into(app);
-
-	module.exports = app;
-
+module.exports = server;
