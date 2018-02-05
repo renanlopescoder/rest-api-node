@@ -1,5 +1,5 @@
 ﻿
-![NodeJS logo](https://raw.githubusercontent.com/altairstudios/nodeserver/master/nodeserver-logo.png)
+![NodeJS logo](logo.png)
 
 ## Node API
 
