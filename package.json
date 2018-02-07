@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "description": "NodeJS REST API is a open code NodeJS Back End API",
   "scripts": {
+    "preinstall": "npm i -g pm2 && pm2 install pm2-logrotate",
     "dev": "pm2 start server.js --watch",
     "start": "node ./node_modules/.bin/pm2 start server.js"
   },
