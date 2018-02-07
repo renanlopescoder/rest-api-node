@@ -1,8 +1,8 @@
-module.exports = (app) => {
+module.exports = (src) => {
 
-	const action = app.src.actions.auth;
+	const action = src.actions.auth;
 
-	app.post('/login', action.login);
+	src.post('/login', action.login);
 
   /**
    *
