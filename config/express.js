@@ -8,7 +8,7 @@ server.use(bodyParser.json());
 server.set('secret', 'opensecret');
 server.use(cors({ origin: '*' }));
 
-consign()
+consign('/src')
 .include("models")
 .then("actions")
 .then("routes/auth.js")
