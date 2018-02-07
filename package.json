@@ -1,6 +1,6 @@
 {
   "name": "rest_api_node",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "NodeJS REST API is a open code NodeJS Back End API",
   "scripts": {
     "preinstall": "npm i -g pm2 && pm2 install pm2-logrotate",
