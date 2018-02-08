@@ -3,7 +3,11 @@
 
 ## Node API
 
-Application in Node, Express, MongoDB and PM2 to give support to Front End development, this application serving a bunch of AJAX requests to give and manipulate data from database.
+### Description
+Node API is production ready and open source project in Node, Express and MongoDB
+
+### Support
+This application is hosted on Heroku and serve a bunch of AJAX requests to give and manipulate data from database and give a support to test front end applications
 
 ### Showcase
 
@@ -11,7 +15,6 @@ Application in Node, Express, MongoDB and PM2 to give support to Front End devel
 | ------ | ------ |
 |https://typescript-angular4.herokuapp.com/ | https://github.com/renanlopescoder/typescript-angular4 |
 |http://mobx-react.herokuapp.com/ | https://github.com/renanlopescoder/mobx-react |
-
 
 ## Routes
 
@@ -73,23 +76,27 @@ Application in Node, Express, MongoDB and PM2 to give support to Front End devel
 - Routes ```./src/routes```
 - Models ```./src/models```
 - Actions ```./src/actions```
+- Services ```./src/services```
 - Configurations of Express ```./config/express.js```
 - Database configurations ```./config/database.js```
 - Server configurations ```./server.js```
 
 ## Configuring the API locally
 
-- Download or clone the project access the project folder with the terminal and execute the CLI <code>npm install</code>.
-- Run the server <code>npm start</code> (Nodemon)
-- Access in your browser <a href="http://localhost:3000">http://localhost:3000</a>
+- Download or clone the project access the project folder with the terminal and execute the CLI <code>npm install</code>
+- Config your database in ```./congig/database.js``` change ```mongoose.connect('mongodb://localhost/yourDatabaseName');```
+- Run the server in development mode <code>npm run dev</code>
+- <code>Ctrl + c</code> to exit of logs and run <code>pm2 kill</code> to kill all process of pm2
+- Access in your browser <a href="http://localhost:3000/projects">http://localhost:3000/projects</a>
 
 ## API Dependencies
 
 - Dependency express - <a href="https://www.npmjs.com/package/express">https://www.npmjs.com/package/express</a>
 - Dependency body-parser - <a href="https://www.npmjs.com/package/body-parser">https://www.npmjs.com/package/body-parser</a>
 - Dependency cors - <a href="https://www.npmjs.com/package/cors">https://www.npmjs.com/package/cors</a>
-- Dependency express-load - <a href="https://www.npmjs.com/package/express-load">https://www.npmjs.com/package/express-load</a>
+- Dependency consign - <a href="https://www.npmjs.com/package/consign">https://www.npmjs.com/package/consign</a>
 - Dependency PM2 - <a href="http://pm2.keymetrics.io/">http://pm2.keymetrics.io/</a>
+- Dependency mongoose - <a href="https://www.npmjs.com/package/mongoose">https://www.npmjs.com/package/mongoose</a>
 
 By: <a href="http://renanlopes.com">Renan Lopes</a>
 

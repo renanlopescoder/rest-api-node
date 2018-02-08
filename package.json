@@ -1,10 +1,10 @@
 {
-  "name": "rest_api_node",
+  "name": "node_api",
   "version": "2.1.0",
-  "description": "NodeJS REST API is a open code NodeJS Back End API",
+  "description": "Node API is production ready and open source project in Node, Express, MongoDB and PM2",
   "scripts": {
     "preinstall": "npm i -g pm2 && pm2 install pm2-logrotate",
-    "dev": "pm2 start server.js --watch",
+    "dev": "pm2 start server.js --watch && pm2 logs",
     "start": "node ./node_modules/.bin/pm2 start server.js"
   },
   "author": "Renan Lopes",
