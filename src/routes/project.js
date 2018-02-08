@@ -1,14 +1,14 @@
-module.exports = (app) => {
+module.exports = (src) => {
 
-	const action = app.src.actions.project;
+	const action = src.actions.project;
 
-	app.get('/projects', action.list);
+	src.get('/projects', action.list);
 
-	app.post('/projects/create', action.create);
+	src.post('/projects/create', action.create);
 
-	app.put('/projects/update/:id', action.update);
+	src.put('/projects/update/:id', action.update);
 
-	app.get('/projects/select/:id', action.searchById);
+	src.get('/projects/select/:id', action.searchById);
 
-	app.delete('/projects/delete/:id', action.deleteById);
+	src.delete('/projects/delete/:id', action.deleteById);
 };

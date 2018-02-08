@@ -3,66 +3,34 @@ const model = mongoose.model('Project');
 
 let actions = {};
 
-actions.list = function (req, res){
-	model.find({},function(error, list){
-		if(error){
-			res.status(500).json(error);
-		}
-		res.json(list);
-	});
-
+actions.list = (req, res) => {
+	model.find({})
+		.then(projects => res.status(200).json(projects))
+		.catch(error => res.status(500).json(error))
 };
 
-actions.create = function(req, res){
-	model
-		.create(req.body).then(function(dados){
-		res.json(dados);
-	}, function(error){
-		console.log(error);
-		res.status(404).json(error);
-	});
-
+actions.create = (req, res) => {
+	model.create(req.body)
+		.then(user => res.json(user))
+		.catch(error => res.status(500).json(error))
 };
 
-actions.searchById = function(req,res){
-
-	model
-		.findById(req.params.id)
-		.then(function(id){
-
-			res.json(id);
-
-		}, function(error){
-		console.log(error);
-		res.status(404).json(error);
-	});
-
+actions.searchById = (req, res) => {
+	model.findById(req.params.id)
+		.then(project => res.status(200).json(project))
+		.catch(error => res.status(404).json(error))
 };
 
-actions.deleteById = function(req,res){
+actions.deleteById = (req, res) => {
 	model.remove({_id: req.params.id})
-	.then(function(){
-		res.sendStatus(200);
-	}, function(error){
-		console.log(error);
-		res.status(404).json (error);
-	});
-
+		.then(() => res.status(200))
+		.catch(() => res.status(404).json(error))
 };
 
-actions.update = function(req,res){
- console.log(req.body);
-	model
-		.findByIdAndUpdate(req.params.id, req.body)
-		.then(function(dado){
-
-			res.json(dado);
-
-		}, function(error){
-		console.log(error);
-		res.status(404).json(error);
-	});
-
+actions.update = (req, res) => {
+	model.findByIdAndUpdate(req.params.id, req.body)
+		.then(project => res.status(200).json(project))
+		.catch(error => res.status(404).json(error))
 };
 
 module.exports = actions;
