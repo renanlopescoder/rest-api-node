@@ -19,7 +19,7 @@ module.exports = (app) => {
             const token = jwt.sign({ user_id: user._id }, SECRET, { expiresIn: '3h' });
             return res.status(200).json(
               {
-                id: user._id,
+                _id: user._id,
                 nickname : user.nickname,
                 username: user.username,
                 photo : user.photo,
