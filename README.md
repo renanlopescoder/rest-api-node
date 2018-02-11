@@ -32,7 +32,7 @@ This application is hosted on Heroku and serve a bunch of AJAX requests to give 
 | ------ | ------ | ------ | ------ | ------ | ------ |
 | https://rest-api-node.herokuapp.com/users | users | get | Nothing | JSON with Array | Get a list of users in the database |
 | https://rest-api-node.herokuapp.com/users/create | users | post | JSON | JSON | Add JSON into the database |
-| https://rest-api-node.herokuapp.com/users/update/:id | users | put | id, JSON | Update the document with sent JSON data |
+| https://rest-api-node.herokuapp.com/users/update/:id | users | put | id | JSON | Update the document with sent JSON data |
 | https://rest-api-node.herokuapp.com/users/select/:id | users | get | id | JSON | Return the document, related to the sent id |
 | https://rest-api-node.herokuapp.com/users/delete/:id | users | delete | id | status 200 | Delete the document, related to the sent id |
 
