@@ -38,10 +38,13 @@ actions.deleteById = (req, res) => {
 		.catch(() => res.status(404).json(error))
 };
 
-actions.update = (req, res) => {
-	model.findByIdAndUpdate(req.params.id, req.body)
+actions.update = (req,res) => {
+	bcrypt.hash(req.body.password, saltRounds, (err, hash) => {
+		req.body.password = hash;
+		model.findByIdAndUpdate(req.params.id, req.body)
 		.then(user => res.status(200).json(user))
 		.catch(error => res.status(404).json(error))
+	})
 };
 
 module.exports = actions;
