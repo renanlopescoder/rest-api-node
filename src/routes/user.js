@@ -6,9 +6,9 @@ module.exports = (src) => {
 
 	src.post('/users/create', action.create);
 
-	src.put('/users/edit/:id', action.update);
+	src.put('/users/update/:id', action.update);
 
-	src.get('/users/show/:id', action.searchById);
+	src.get('/users/select/:id', action.searchById);
 
-	src.delete('/users/remove/:id', action.deleteById);
+	src.delete('/users/delete/:id', action.deleteById);
 };
