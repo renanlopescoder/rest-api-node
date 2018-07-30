@@ -19,7 +19,7 @@ This application is hosted on Heroku and serve a bunch of AJAX requests to give 
 ### Showcase
 
 | Application | Code (GitHub) | Server
-| ------ | ------ |
+| ------ | ------ | ------ |
 | https://typescript-angular4.herokuapp.com/ | https://github.com/renanlopescoder/typescript-angular4 | staging
 | http://mobx-react.herokuapp.com/ | https://github.com/renanlopescoder/mobx-react | staging
 
