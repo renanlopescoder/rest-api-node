@@ -9,12 +9,20 @@ Node API is production ready and open source project in Node, Express and MongoD
 ### Support
 This application is hosted on Heroku and serve a bunch of AJAX requests to give and manipulate data from database and give a support to test front end applications
 
+### Servers
+
+| Server | Description | Api Url | Branch (GitHub) |
+| ------ | ------ | ------ | ------ |
+| staging | Open Api | https://rest-api-node.herokuapp.com | master
+| production | Authenticated Api | https://rest-api-node-production.herokuapp.com | production
+
 ### Showcase
 
-| Application | Code (GitHub) |
+| Application | Code (GitHub) | Server
 | ------ | ------ |
-|https://typescript-angular4.herokuapp.com/ | https://github.com/renanlopescoder/typescript-angular4 |
-|http://mobx-react.herokuapp.com/ | https://github.com/renanlopescoder/mobx-react |
+| https://typescript-angular4.herokuapp.com/ | https://github.com/renanlopescoder/typescript-angular4 | staging
+| http://mobx-react.herokuapp.com/ | https://github.com/renanlopescoder/mobx-react | staging
+
 
 ## Routes
 
