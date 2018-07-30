@@ -9,7 +9,7 @@ module.exports = (src) => {
    * PT: rota para autenticar o usuário usando Json Web Token
    * EN: route to authenticate the user using Json Web Token
    *
-   * app.use('/*', api.verifyToken);
+   * src.use('/*', action.verifyToken);
    */
 
 };
