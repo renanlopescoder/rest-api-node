@@ -1,14 +1,9 @@
-module.exports = (src) => {
+module.exports = src => {
+  const { ProjectController } = src.app.Controllers;
 
-	const action = src.actions.project;
-
-	src.get('/projects', action.list);
-
-	src.post('/projects/create', action.create);
-
-	src.put('/projects/update/:id', action.update);
-
-	src.get('/projects/select/:id', action.searchById);
-
-	src.delete('/projects/delete/:id', action.deleteById);
+  src.get("/projects", ProjectController.getAllProjects);
+  src.post("/projects/create", ProjectController.createProject);
+  src.put("/projects/update/:id", ProjectController.updateProject);
+  src.get("/projects/select/:id", ProjectController.searchProjectById);
+  src.delete("/projects/delete/:id", ProjectController.deleteProjectById);
 };

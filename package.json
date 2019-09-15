@@ -3,24 +3,21 @@
   "version": "2.1.0",
   "description": "Node API is production ready and open source project in Node, Express, MongoDB and PM2",
   "scripts": {
-    "preinstall": "npm i -g pm2 && pm2 install pm2-logrotate",
-    "dev": "pm2 start server.js --watch && pm2 logs",
-    "start": "node ./node_modules/.bin/pm2 start server.js"
+    "start": "node server.js"
   },
   "author": "Renan Lopes",
   "license": "MIT",
   "dependencies": {
-    "bcrypt": "^1.0.2",
+    "bcrypt": "^3.0.6",
     "body-parser": "^1.15.2",
     "consign": "^0.1.6",
     "cors": "^2.8.3",
     "express": "^4.14.0",
     "jsonwebtoken": "^7.2.1",
-    "mongoose": "^4.7.1",
-    "nodemailer": "^4.2.0",
-    "pm2": "^2.9.3"
+    "mongoose": "^5.7.1",
+    "nodemailer": "^4.2.0"
   },
   "engines": {
-    "node": "8.9.4"
+    "node": "11.10.0"
   }
 }

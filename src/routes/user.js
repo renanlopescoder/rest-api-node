@@ -1,14 +1,13 @@
-module.exports = (src) => {
+module.exports = src => {
+  const { UserController } = src.app.Controllers;
 
-	const action = src.actions.user;
+  src.get("/users", UserController.getAllUsers);
 
-	src.get('/users', action.list);
+  src.post("/users/create", UserController.createUser);
 
-	src.post('/users/create', action.create);
+  src.put("/users/update/:id", UserController.updateUser);
 
-	src.put('/users/update/:id', action.update);
+  src.get("/users/select/:id", UserController.searchUserById);
 
-	src.get('/users/select/:id', action.searchById);
-
-	src.delete('/users/delete/:id', action.deleteById);
+  src.delete("/users/delete/:id", UserController.deleteUserById);
 };
