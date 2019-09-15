@@ -3,6 +3,5 @@ module.exports = src => {
 
   src.post("/login", AuthController.login);
   src.post("/users/create", UserController.createUser);
-  // Private Routes
-  // src.use("/*", AuthController.verifyToken);
+  src.use("/*", AuthController.verifyToken);
 };
