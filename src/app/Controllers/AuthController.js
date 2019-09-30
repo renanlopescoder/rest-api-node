@@ -7,14 +7,15 @@ const model = mongoose.model("User");
 const { secret } = require("../Constants/auth");
 
 class AuthController {
-  async login(req, res) {
+  login = async (req, res) => {
     try {
       const user = await model.findOne({ email: req.body.email });
-      const match = await bcrypt.compare(password, user.passwordHash);
+      const match = await bcrypt.compareSync(req.body.password, user.password);
 
+      let token;
       if (!match) {
         res.status(401).send({ error: error, message: "Password mismatch" });
-        const token = jwt.sign({ user_id: user._id }, secret, {
+        token = jwt.sign({ user_id: user._id }, secret, {
           expiresIn: "3h"
         });
       }
@@ -32,9 +33,9 @@ class AuthController {
         .status(401)
         .json({ error: error, message: "Error, user does not exists" });
     }
-  }
+  };
 
-  async verifyToken(req, res, next) {
+  verifyToken = async (req, res, next) => {
     const TOKEN = req.get("Authorization");
     if (TOKEN) {
       try {
@@ -47,7 +48,7 @@ class AuthController {
     } else {
       res.status(401).json("Token is required");
     }
-  }
+  };
 }
 
 module.exports = new AuthController();
