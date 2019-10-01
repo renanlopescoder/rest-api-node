@@ -1,6 +1,6 @@
 {
   "name": "node_api",
-  "version": "3.0.2",
+  "version": "3.0.4",
   "description": "Node API is production ready and open source project in Node, Express, MongoDB",
   "scripts": {
     "start": "node server.js"

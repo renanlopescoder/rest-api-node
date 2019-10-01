@@ -7,7 +7,7 @@ const model = mongoose.model("User");
 const { secret } = require("../Constants/auth");
 
 class AuthController {
-  login = async (req, res) => {
+  async login(req, res) {
     try {
       const user = await model.findOne({ email: req.body.email });
       const match = await bcrypt.compareSync(req.body.password, user.password);
@@ -35,7 +35,7 @@ class AuthController {
     }
   };
 
-  verifyToken = async (req, res, next) => {
+  async verifyToken(req, res, next) {
     const TOKEN = req.get("Authorization");
     if (TOKEN) {
       try {

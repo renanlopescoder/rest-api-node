@@ -8,15 +8,19 @@ const model = mongoose.model("User");
 const transporter = mailService.config();
 
 class UserController {
-  hashPassword = password => {
-    console.log(password);
+  constructor() {
+    this.createUser = this.createUser.bind(this);
+    this.updateUser = this.updateUser.bind(this);
+  }
+
+  hashPassword(password) {
     const saltRounds = bcrypt.genSaltSync(rounds);
     const hashedPassword = bcrypt.hashSync(password, saltRounds);
 
     return hashedPassword;
   };
 
-  sendWelcomeEmail = email => {
+  sendWelcomeEmail(email) {
     const content = mailService.content(email);
     transporter.sendMail(content);
   };
@@ -30,8 +34,7 @@ class UserController {
     }
   }
 
-  createUser = async (req, res) => {
-    console.log("HEEERE", req.body);
+  async createUser(req, res) {
     const user = req.body;
     try {
       user.password = this.hashPassword(user.password);
@@ -45,18 +48,18 @@ class UserController {
     }
   };
 
-  updateUser = async (req, res) => {
+  async updateUser(req, res) {
     const user = req.body;
     try {
       user.password = this.hashPassword(password);
-      const updatedUser = await model.findByIdAndUpdate(req.params.id, user);
+      await model.findByIdAndUpdate(req.params.id, user);
       res.status(200).json(user);
     } catch (error) {
       res.status(404).json(error);
     }
   };
 
-  searchUserById = async (req, res) => {
+  async searchUserById(req, res) {
     const { id } = req.params;
     try {
       const user = await model.findById(id);
@@ -66,7 +69,7 @@ class UserController {
     }
   };
 
-  deleteUserById = async (req, res) => {
+  async deleteUserById(req, res) {
     const { id } = req.params;
     try {
       await model.remove({ _id: id });
