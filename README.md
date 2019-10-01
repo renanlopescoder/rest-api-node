@@ -23,7 +23,6 @@ This application is hosted on Heroku and serve a bunch of AJAX requests to give 
 | ------------------------------------------ | ------------------------------------------------------ | ------- |
 | https://typescript-angular4.herokuapp.com/ | https://github.com/renanlopescoder/typescript-angular4 | staging |
 | http://mobx-react.herokuapp.com/           | https://github.com/renanlopescoder/mobx-react          | staging |
-| http://vue-clash.herokuapp.com/            | https://github.com/renanlopescoder/vue                 | staging |
 
 ## Routes
 
