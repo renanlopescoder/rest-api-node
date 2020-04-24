@@ -5,7 +5,7 @@ class MailerService {
     this.transport = this.config();
   }
 
-  onfig = () =>
+  config = () =>
     nodemailer.createTransport({
       host: "smtp.gmail.com",
       auth: {
