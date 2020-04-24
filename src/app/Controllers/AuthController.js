@@ -1,5 +1,3 @@
-"use strict";
-
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -7,14 +5,14 @@ const model = mongoose.model("User");
 const { secret } = require("../Constants/auth");
 
 class AuthController {
-  async login(req, res) {
+  login = async (req, res) => {
     try {
       const user = await model.findOne({ email: req.body.email });
       const match = await bcrypt.compareSync(req.body.password, user.password);
 
       let token;
       if (!match) {
-        res.status(401).send({ error: error, message: "Password mismatch" });
+        res.status(401).send({ error: "error", message: "Password mismatch" });
         token = jwt.sign({ user_id: user._id }, secret, {
           expiresIn: "3h"
         });
@@ -35,11 +33,11 @@ class AuthController {
     }
   };
 
-  async verifyToken(req, res, next) {
-    const TOKEN = req.get("Authorization");
-    if (TOKEN) {
+  verifyToken = (req, res, next) => {
+    const token = req.get("Authorization");
+    if (token) {
       try {
-        let decoded = jwt.verify(token, SECRET);
+        let decoded = jwt.verify(token, secret);
         req.user = decoded;
         next();
       } catch (error) {

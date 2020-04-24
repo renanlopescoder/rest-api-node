@@ -1,7 +1,4 @@
-"use strict";
-
 const mongoose = require("mongoose");
-const http = require("http");
 const expressServer = require("./src/config/express");
 const cluster = require("cluster");
 const OS = require("os");
@@ -14,30 +11,30 @@ class App {
     this.buildCluster(workers, autoScale);
   }
 
-  database() {
+  database = () => {
     mongoose.connect(databaseUrl, {
       useCreateIndex: true,
       useNewUrlParser: true,
       useUnifiedTopology: true
     });
 
-    mongoose.connection.on("connected", function() {
+    mongoose.connection.on("connected", () => {
       console.log("Connected Database");
     });
 
-    process.on("SIGINT", function() {
-      mongoose.connection.close(function() {
+    process.on("SIGINT", () => {
+      mongoose.connection.close(() => {
         console.log("Close database connection");
         process.exit(0);
       });
     });
 
-    mongoose.connection.on("error", function(error) {
+    mongoose.connection.on("error", error => {
       console.log("Connection Error: " + error);
     });
-  }
+  };
 
-  buildCluster(workers, autoScale) {
+  buildCluster = (workers, autoScale) => {
     if (autoScale) {
       workers = this.autoScale(workers);
     }
@@ -60,13 +57,13 @@ class App {
         console.log(`Server running on port ${PORT}`);
       });
     }
-  }
+  };
 
-  autoScale(workersByCpu) {
+  autoScale = workersByCpu => {
     const cpus = OS.cpus().length;
     const workers = cpus / workersByCpu;
     return workers;
-  }
+  };
 }
 
 /**

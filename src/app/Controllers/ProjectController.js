@@ -1,10 +1,8 @@
-"use strict";
-
 const mongoose = require("mongoose");
 const model = mongoose.model("Project");
 
 class ProjectController {
-  async getAllProjects(req, res) {
+  async getAllProjects(_, res) {
     try {
       const projects = await model.find({});
       res.status(200).json(projects);
