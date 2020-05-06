@@ -1,6 +1,5 @@
-module.exports = src => {
+module.exports = (src) => {
   const { ProjectController } = src.app.Controllers;
-
   src.get("/projects", ProjectController.getAllProjects);
   src.post("/projects/create", ProjectController.createProject);
   src.put("/projects/update/:id", ProjectController.updateProject);

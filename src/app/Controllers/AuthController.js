@@ -14,7 +14,7 @@ class AuthController {
       if (!match) {
         res.status(401).send({ error: "error", message: "Password mismatch" });
         token = jwt.sign({ user_id: user._id }, secret, {
-          expiresIn: "3h"
+          expiresIn: "3h",
         });
       }
 
@@ -24,7 +24,7 @@ class AuthController {
         username: user.username,
         photo: user.photo,
         email: user.email,
-        token: token
+        token: token,
       });
     } catch (error) {
       res
