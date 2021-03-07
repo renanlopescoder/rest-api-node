@@ -15,7 +15,7 @@ class App {
     mongoose.connect(databaseUrl, {
       useCreateIndex: true,
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
     });
 
     mongoose.connection.on("connected", () => {
@@ -29,7 +29,7 @@ class App {
       });
     });
 
-    mongoose.connection.on("error", error => {
+    mongoose.connection.on("error", (error) => {
       console.log("Connection Error: " + error);
     });
   };
@@ -47,7 +47,7 @@ class App {
         cluster.fork();
       }
 
-      cluster.on("exit", worker => {
+      cluster.on("exit", (worker) => {
         console.error(`Worker ${worker.id} Offline`);
         cluster.fork();
       });
@@ -59,7 +59,7 @@ class App {
     }
   };
 
-  autoScale = workersByCpu => {
+  autoScale = (workersByCpu) => {
     const cpus = OS.cpus().length;
     const workers = cpus / workersByCpu;
     return workers;

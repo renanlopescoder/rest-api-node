@@ -1,4 +1,4 @@
 module.exports = {
   databaseUrl:
-    "mongodb://renanlopes:renanlopescoder@ds145312.mlab.com:45312/heroku_jwprwsr5"
+    "mongodb+srv://renanlopes:opendb8@cluster.mflsx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
 };
