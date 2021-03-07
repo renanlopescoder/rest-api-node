@@ -1,40 +1,33 @@
-"use strict";
-
 const mongoose = require("mongoose");
-const mailService = require("../Services/Mail");
 const bcrypt = require("bcrypt");
 const { rounds } = require("../Constants/auth");
 const model = mongoose.model("User");
-const transporter = mailService.config();
+
+const MailerService = require("../Services/Mail");
 
 class UserController {
-  constructor() {
-    this.createUser = this.createUser.bind(this);
-    this.updateUser = this.updateUser.bind(this);
-  }
-
-  hashPassword(password) {
+  hashPassword = password => {
     const saltRounds = bcrypt.genSaltSync(rounds);
     const hashedPassword = bcrypt.hashSync(password, saltRounds);
 
     return hashedPassword;
   };
 
-  sendWelcomeEmail(email) {
-    const content = mailService.content(email);
-    transporter.sendMail(content);
+  sendWelcomeEmail = email => {
+    const content = MailerService.welcomeMailContent(email);
+    MailerService.sendMail(content);
   };
 
-  async getAllUsers(req, res) {
+  getAllUsers = async (_, res) => {
     try {
       const users = await model.find({});
       res.status(200).json(users);
     } catch (error) {
       res.status(500).json(error);
     }
-  }
+  };
 
-  async createUser(req, res) {
+  createUser = async (req, res) => {
     const user = req.body;
     try {
       user.password = this.hashPassword(user.password);
@@ -48,10 +41,10 @@ class UserController {
     }
   };
 
-  async updateUser(req, res) {
+  updateUser = async (req, res) => {
     const user = req.body;
     try {
-      user.password = this.hashPassword(password);
+      user.password = this.hashPassword(user.password);
       await model.findByIdAndUpdate(req.params.id, user);
       res.status(200).json(user);
     } catch (error) {
@@ -59,7 +52,7 @@ class UserController {
     }
   };
 
-  async searchUserById(req, res) {
+  searchUserById = async (req, res) => {
     const { id } = req.params;
     try {
       const user = await model.findById(id);
@@ -69,7 +62,7 @@ class UserController {
     }
   };
 
-  async deleteUserById(req, res) {
+  deleteUserById = async (req, res) => {
     const { id } = req.params;
     try {
       await model.remove({ _id: id });

@@ -6,6 +6,10 @@
 
 Node API is production ready and open source project in Node, Express and MongoDB
 
+### Documentation
+
+Swagger Docs https://rest-api-node.herokuapp.com/docs/
+
 ### Support
 
 This application is hosted on Heroku and serve a bunch of AJAX requests to give and manipulate data from database and give a support to test front end applications
