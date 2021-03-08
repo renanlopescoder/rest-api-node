@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 const consign = require("consign");
 const swaggerUi = require("swagger-ui-express");
 const swaggerJsdoc = require("swagger-jsdoc");
@@ -8,18 +9,7 @@ const swaggerOptions = require("../../swagger");
 
 const app = express();
 
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested, Content-Type, Accept Authorization",
-  );
-  if (req.method === "OPTIONS") {
-    res.header("Access-Control-Allow-Methods", "POST, PUT, PATCH, GET, DELETE");
-    return res.status(200).json({});
-  }
-  next();
-});
+app.use(cors({ origin: "*" }));
 app.use(bodyParser.json());
 app.set("secret", "opensecret");
 
