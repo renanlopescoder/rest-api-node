@@ -97,7 +97,20 @@ This application is hosted on Heroku and serve a bunch of AJAX requests to give 
 ## Configuring the API locally
 
 - Download or clone the project access the project folder with the terminal and execute the CLI <code>npm install</code>
-- To change database change on constants the databaseUrl
+- Create your .env file with the following configuration
+  - WORKERS: How many workers you need
+  - AUTO_SCALE: When enabled will create workers by CPU Eg.: CPU \* WORKERS
+  - DATABASE_URL: Your database URL
+  - AUTH_ROUNDS and AUTH_SECRET: Those are used for authentication and verification
+
+```
+WORKERS=1
+AUTO_SCALE=true
+DATABASE_URL=mongodb+srv://<user>:<password>@cluster0.mongodb.net/?retryWrites=true&w=majority
+AUTH_ROUNDS=15
+AUTH_SECRET=docssecret
+```
+
 - Run the server <code>npm start</code>
 - Access in your browser <a href="http://localhost:3000/projects">http://localhost:3000/projects</a>
 
@@ -111,6 +124,6 @@ This application is hosted on Heroku and serve a bunch of AJAX requests to give 
 
 By: <a href="http://renanlopes.com">Renan Lopes</a>
 
-[heroku.com]: https://www.heroku.com
-[mlab.com]: https://mlab.com
+[vercel.com]: https://www.vercel.com
+[mongodb.com]: https://www.mongodb.com/atlas/database
 [github.com]: https://www.github.com

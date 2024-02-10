@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const model = mongoose.model("User");
-const { secret } = require("../Constants/auth");
 
 class AuthController {
   login = async (req, res) => {
@@ -13,7 +12,7 @@ class AuthController {
       let token;
       if (!match) {
         res.status(401).send({ error: "error", message: "Password mismatch" });
-        token = jwt.sign({ user_id: user._id }, secret, {
+        token = jwt.sign({ user_id: user._id }, process.env.AUTH_SECRET, {
           expiresIn: "3h",
         });
       }
@@ -37,7 +36,7 @@ class AuthController {
     const token = req.get("Authorization");
     if (token) {
       try {
-        let decoded = jwt.verify(token, secret);
+        let decoded = jwt.verify(token, process.env.AUTH_SECRET);
         req.user = decoded;
         next();
       } catch (error) {

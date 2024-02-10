@@ -2,17 +2,39 @@ const mongoose = require("mongoose");
 const expressServer = require("./src/config/express");
 const cluster = require("cluster");
 const OS = require("os");
-const { databaseUrl } = require("./src/app/Constants/database");
-
-const PORT = process.env.PORT || 8080;
+require("dotenv").config();
 
 class App {
-  constructor(workers, autoScale = true) {
-    this.buildCluster(workers, autoScale);
+  port;
+  databaseUrl;
+
+  constructor() {
+    this.validateEnvVars();
+
+    this.port = process.env.PORT || 8080;
+    this.databaseUrl = process.env.DATABASE_URL;
+
+    this.buildCluster();
   }
 
+  validateEnvVars = () => {
+    const errorMessage = "Required Environment Variable:";
+
+    if (!process.env.DATABASE_URL) {
+      throw new Error(`${errorMessage} DATABASE_URL`);
+    }
+
+    if (!process.env.AUTH_ROUNDS) {
+      throw new Error(`${errorMessage} AUTH_ROUNDS`);
+    }
+
+    if (!process.env.AUTH_SECRET) {
+      throw new Error(`${errorMessage} AUTH_SECRET`);
+    }
+  };
+
   database = () => {
-    mongoose.connect(databaseUrl, {
+    mongoose.connect(this.databaseUrl, {
       useCreateIndex: true,
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -34,13 +56,15 @@ class App {
     });
   };
 
-  buildCluster = (workers, autoScale) => {
-    if (autoScale) {
+  buildCluster = () => {
+    let workers = Number(process.env.WORKERS ?? 1);
+
+    if (process.env.AUTO_SCALE === "true") {
       workers = this.autoScale(workers);
     }
 
     if (cluster.isMaster) {
-      console.log("Cluster Master Online");
+      console.log("Master Cluster Online");
 
       for (let i = 0; i < workers; i += 1) {
         console.log(`Creating instances ${workers}`);
@@ -52,25 +76,18 @@ class App {
         cluster.fork();
       });
     } else {
-      expressServer.listen(PORT, () => {
+      expressServer.listen(this.port, () => {
         this.database();
-        console.log(`Server running on port ${PORT}`);
+        console.log(`Server running on port ${this.port}`);
       });
     }
   };
 
   autoScale = (workersByCpu) => {
     const cpus = OS.cpus().length;
-    const workers = cpus / workersByCpu;
+    const workers = cpus * workersByCpu;
     return workers;
   };
 }
 
-/**
- * Application Start
- *
- * @param number number of workers
- * @param boolean auto scale will use the number of workers by each CPU
- */
-
-new App(1, false);
+new App();

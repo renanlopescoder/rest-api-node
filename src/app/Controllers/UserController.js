@@ -1,19 +1,18 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-const { rounds } = require("../Constants/auth");
 const model = mongoose.model("User");
 
 const MailerService = require("../Services/Mail");
 
 class UserController {
-  hashPassword = password => {
-    const saltRounds = bcrypt.genSaltSync(rounds);
+  hashPassword = (password) => {
+    const saltRounds = bcrypt.genSaltSync(process.env.AUTH_ROUNDS);
     const hashedPassword = bcrypt.hashSync(password, saltRounds);
 
     return hashedPassword;
   };
 
-  sendWelcomeEmail = email => {
+  sendWelcomeEmail = (email) => {
     const content = MailerService.welcomeMailContent(email);
     MailerService.sendMail(content);
   };

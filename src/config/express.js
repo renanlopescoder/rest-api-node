@@ -20,8 +20,9 @@ app.get("/docs", swaggerUi.setup(specs, { explorer: true }));
 consign({ cwd: process.cwd() + "/src" })
   .include("app/Models")
   .then("app/Controllers")
+  .then("routes/public")
   .then("app/Middleware/AuthMiddleware.js")
-  .then("routes")
+  .then("routes/private")
   .into(app);
 
 module.exports = app;
