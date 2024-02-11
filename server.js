@@ -57,7 +57,7 @@ class App {
   };
 
   buildCluster = () => {
-    let workers = Number(process.env.WORKERS ?? 1);
+    let workers = Number(process.env.WORKERS || 1);
 
     if (process.env.AUTO_SCALE === "true") {
       workers = this.autoScale(workers);

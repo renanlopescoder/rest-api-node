@@ -6,7 +6,7 @@ const MailerService = require("../Services/Mail");
 
 class UserController {
   hashPassword = (password) => {
-    const saltRounds = bcrypt.genSaltSync(process.env.AUTH_ROUNDS);
+    const saltRounds = bcrypt.genSaltSync(Number(process.env.AUTH_ROUNDS));
     const hashedPassword = bcrypt.hashSync(password, saltRounds);
 
     return hashedPassword;
@@ -17,57 +17,74 @@ class UserController {
     MailerService.sendMail(content);
   };
 
-  getAllUsers = async (_, res) => {
+  getAllUsers = async (request, response) => {
     try {
       const users = await model.find({});
-      res.status(200).json(users);
+
+      return response.status(200).json(users);
     } catch (error) {
-      res.status(500).json(error);
+      return response.status(500).json(error);
     }
   };
 
-  createUser = async (req, res) => {
-    const user = req.body;
+  createUser = async (request, response) => {
+    const user = request.body;
     try {
       user.password = this.hashPassword(user.password);
-      console.log(user.password);
+
       const newUser = await model.create(user);
       this.sendWelcomeEmail(user.email);
-      res.status(200).json(newUser);
+
+      return response.status(200).json(newUser);
     } catch (error) {
       console.log(error);
-      res.status(500).json(error);
+      return response.status(500).json(error);
     }
   };
 
-  updateUser = async (req, res) => {
-    const user = req.body;
+  updateUser = async (request, response) => {
+    const userData = request.body;
+
+    // request.user is the authenticated user id
+    if (request.user !== request.params.id) {
+      return response.status(401).send({
+        error: "error",
+        message: "Permission Denied...",
+      });
+    }
+
     try {
-      user.password = this.hashPassword(user.password);
-      await model.findByIdAndUpdate(req.params.id, user);
-      res.status(200).json(user);
+      userData.password = this.hashPassword(userData.password);
+
+      await model.findByIdAndUpdate(request.params.id, userData);
+
+      return response.status(200).json(user);
     } catch (error) {
-      res.status(404).json(error);
+      return response.status(404).json(error);
     }
   };
 
-  searchUserById = async (req, res) => {
-    const { id } = req.params;
+  searchUserById = async (request, response) => {
+    const { id } = request.params;
     try {
       const user = await model.findById(id);
-      res.status(200).json(user);
+
+      let userResponse = Object.assign({}, user._doc);
+      delete userResponse.password;
+
+      return response.status(200).json(userResponse);
     } catch (error) {
-      res.status(404).json(error);
+      return response.status(404).json(error);
     }
   };
 
-  deleteUserById = async (req, res) => {
-    const { id } = req.params;
+  deleteUserById = async (request, response) => {
+    const { id } = request.params;
     try {
-      await model.remove({ _id: id });
-      res.status(200);
+      await model.deleteOne({ _id: id });
+      return response.status(200).json({ message: "Deleted successfully" });
     } catch (error) {
-      res.status(404).json(error);
+      return response.status(404).json(error);
     }
   };
 }

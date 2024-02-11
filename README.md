@@ -8,18 +8,17 @@ Node API is production ready and open source project in Node, Express and MongoD
 
 ### Documentation
 
-Swagger Docs https://rest-api-node.herokuapp.com/docs/
+Swagger Docs https://rest-api-node-413916.uc.r.appspot.com/docs/
 
 ### Support
 
-This application is hosted on Heroku and serve a bunch of AJAX requests to give and manipulate data from database and give a support to test front end applications
+This application is hosted on Google Cloud Platfom and serve a bunch of AJAX requests to give and manipulate data from database and give a support to test front end applications
 
 ### Servers
 
-| Server     | Description       | Api Url                                        | Branch (GitHub) |
-| ---------- | ----------------- | ---------------------------------------------- | --------------- |
-| staging    | Open Api          | https://rest-api-node.herokuapp.com            | master          |
-| production | Authenticated Api | https://rest-api-node-production.herokuapp.com | production      |
+| Server     | Description                           | Api Url                                       |
+| ---------- | ------------------------------------- | --------------------------------------------- |
+| App Engine | Rest API Node - Google Cloud Platform | https://rest-api-node-413916.uc.r.appspot.com |
 
 ### Showcase
 
@@ -33,23 +32,23 @@ This application is hosted on Heroku and serve a bunch of AJAX requests to give 
 
 #### Projects
 
-| URL                                                     | Collection | Method | Parameters | Response                                | Action                                      |
-| ------------------------------------------------------- | ---------- | ------ | ---------- | --------------------------------------- | ------------------------------------------- |
-| https://rest-api-node.herokuapp.com/projects            | projects   | get    | Nothing    | JSON with Array                         | Get a list of projects in the database      |
-| https://rest-api-node.herokuapp.com/projects/create     | projects   | post   | JSON       | JSON                                    | Add JSON into the database                  |
-| https://rest-api-node.herokuapp.com/projects/update/:id | projects   | put    | id, JSON   | Update the document with sent JSON data |
-| https://rest-api-node.herokuapp.com/projects/select/:id | projects   | get    | id         | JSON                                    | Return the document, related to the sent id |
-| https://rest-api-node.herokuapp.com/projects/delete/:id | projects   | delete | id         | status 200                              | Delete the document, related to the sent id |
+| URL                                                               | Collection | Method | Parameters | Response                                | Action                                      |
+| ----------------------------------------------------------------- | ---------- | ------ | ---------- | --------------------------------------- | ------------------------------------------- |
+| https://rest-api-node-413916.uc.r.appspot.com/projects            | projects   | get    | Nothing    | JSON with Array                         | Get a list of projects in the database      |
+| https://rest-api-node-413916.uc.r.appspot.com/projects/create     | projects   | post   | JSON       | JSON                                    | Add JSON into the database                  |
+| https://rest-api-node-413916.uc.r.appspot.com/projects/update/:id | projects   | put    | id, JSON   | Update the document with sent JSON data |
+| https://rest-api-node-413916.uc.r.appspot.com/projects/select/:id | projects   | get    | id         | JSON                                    | Return the document, related to the sent id |
+| https://rest-api-node-413916.uc.r.appspot.com/projects/delete/:id | projects   | delete | id         | status 200                              | Delete the document, related to the sent id |
 
 #### Users
 
-| URL                                                  | Collection | Method | Parameters | Response        | Action                                      |
-| ---------------------------------------------------- | ---------- | ------ | ---------- | --------------- | ------------------------------------------- |
-| https://rest-api-node.herokuapp.com/users            | users      | get    | Nothing    | JSON with Array | Get a list of users in the database         |
-| https://rest-api-node.herokuapp.com/users/create     | users      | post   | JSON       | JSON            | Add JSON into the database                  |
-| https://rest-api-node.herokuapp.com/users/update/:id | users      | put    | id         | JSON            | Update the document with sent JSON data     |
-| https://rest-api-node.herokuapp.com/users/select/:id | users      | get    | id         | JSON            | Return the document, related to the sent id |
-| https://rest-api-node.herokuapp.com/users/delete/:id | users      | delete | id         | status 200      | Delete the document, related to the sent id |
+| URL                                                            | Collection | Method | Parameters | Response        | Action                                      |
+| -------------------------------------------------------------- | ---------- | ------ | ---------- | --------------- | ------------------------------------------- |
+| https://rest-api-node-413916.uc.r.appspot.com/users            | users      | get    | Nothing    | JSON with Array | Get a list of users in the database         |
+| https://rest-api-node-413916.uc.r.appspot.com/users/create     | users      | post   | JSON       | JSON            | Add JSON into the database                  |
+| https://rest-api-node-413916.uc.r.appspot.com/users/update/:id | users      | put    | id         | JSON            | Update the document with sent JSON data     |
+| https://rest-api-node-413916.uc.r.appspot.com/users/select/:id | users      | get    | id         | JSON            | Return the document, related to the sent id |
+| https://rest-api-node-413916.uc.r.appspot.com/users/delete/:id | users      | delete | id         | status 200      | Delete the document, related to the sent id |
 
 ## Collections
 
@@ -79,15 +78,16 @@ This application is hosted on Heroku and serve a bunch of AJAX requests to give 
 
 ## API
 
-| Technology       | Description             | Link         |
-| ---------------- | ----------------------- | ------------ |
-| Heroku           | Cloud Platform          | [heroku.com] |
-| Heroku mLab Dyno | MongoDB database server | [mlab.com]   |
-| GitHub           | Version Controlling     | [github.com] |
+| Technology    | Description             | Link               |
+| ------------- | ----------------------- | ------------------ |
+| AppEngine     | Google Cloud Platform   | [cloud.google.com] |
+| MongoDB Atlas | MongoDB database server | [mongodb.com]      |
+| GitHub        | Version Controlling     | [github.com]       |
 
 ## API Directories
 
-- Routes `./src/routes`
+- Public Routes `./src/routes/public`
+- Private Routes `./src/routes/private`
 - Models `./src/app/Models`
 - Controllers `./src/app/Controllers`
 - Services `./src/app/Services`
@@ -112,7 +112,8 @@ AUTH_SECRET=docssecret
 ```
 
 - Run the server <code>npm start</code>
-- Access in your browser <a href="http://localhost:3000/projects">http://localhost:3000/projects</a>
+- Access in your browser <a href="http://localhost:8080/projects">http://localhost:8080/projects</a>
+- For deployment is important to update app.yaml to your service_account and can be found on your GCP
 
 ## API Dependencies
 

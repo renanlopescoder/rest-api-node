@@ -4,46 +4,57 @@ const jwt = require("jsonwebtoken");
 const model = mongoose.model("User");
 
 class AuthController {
-  login = async (req, res) => {
+  login = async (request, response) => {
     try {
-      const user = await model.findOne({ email: req.body.email });
-      const match = await bcrypt.compareSync(req.body.password, user.password);
+      const user = await model.findOne({ email: request.body.email });
+      const match = await bcrypt.compareSync(
+        request.body.password,
+        user.password
+      );
 
-      let token;
       if (!match) {
-        res.status(401).send({ error: "error", message: "Password mismatch" });
-        token = jwt.sign({ user_id: user._id }, process.env.AUTH_SECRET, {
-          expiresIn: "3h",
-        });
+        response
+          .status(401)
+          .send({ error: "error", message: "Password mismatch" });
       }
 
-      res.status(200).json({
+      const token = jwt.sign({ user_id: user._id }, process.env.AUTH_SECRET, {
+        expiresIn: "3h",
+      });
+
+      response.status(200).json({
         _id: user._id,
         nickname: user.nickname,
         username: user.username,
         photo: user.photo,
         email: user.email,
-        token: token,
+        token,
       });
     } catch (error) {
-      res
+      response
         .status(401)
         .json({ error: error, message: "Error, user does not exists" });
     }
   };
 
-  verifyToken = (req, res, next) => {
-    const token = req.get("Authorization");
-    if (token) {
+  verifyToken = (request, response, next) => {
+    const bearerFormat = request.get("authorization");
+
+    if (bearerFormat) {
+      const token = bearerFormat.split(" ")[1];
+
       try {
-        let decoded = jwt.verify(token, process.env.AUTH_SECRET);
-        req.user = decoded;
-        next();
+        const decoded = jwt.verify(token, process.env.AUTH_SECRET);
+        request.user = decoded;
+
+        return next();
       } catch (error) {
-        res.status(401).json({ error: error, message: "Invalid Token" });
+        return response
+          .status(401)
+          .json({ error: error, message: "Invalid Token" });
       }
     } else {
-      res.status(401).json("Token is required");
+      response.status(401).json("Token is required");
     }
   };
 }

@@ -20,9 +20,17 @@
         "url": "http://localhost:8080"
       },
       {
-        "url": "https://rest-api-node.herokuapp.com"
+        "url": "https://rest-api-node-413916.uc.r.appspot.com"
       }
     ]
   },
-  "apis": ["./src/app/Models/User.js", "./src/routes/user.js"]
+  "apis": [
+    "./src/app/Middleware/AuthMiddleware.js",
+    "./src/app/Models/User.js",
+    "./src/routes/public/user.js",
+    "./src/routes/private/user.js",
+    "./src/app/Models/Project.js",
+    "./src/routes/public/project.js",
+    "./src/routes/private/project.js"
+  ]
 }

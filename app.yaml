@@ -1,0 +1,29 @@
+runtime: nodejs
+api_version: "1.0"
+env: flexible
+threadsafe: true
+automatic_scaling:
+  cool_down_period_sec: 180
+  min_num_instances: 1
+  max_num_instances: 2
+  cpu_utilization:
+    target_utilization: 0.9
+network:
+  name: default
+resources:
+  cpu: 2
+  memory_gb: 4.6
+  disk_size_gb: 10
+liveness_check:
+  initial_delay_sec: "300"
+  check_interval_sec: "30"
+  timeout_sec: "4"
+  failure_threshold: 4
+  success_threshold: 2
+readiness_check:
+  check_interval_sec: "5"
+  timeout_sec: "4"
+  failure_threshold: 2
+  success_threshold: 2
+  app_start_timeout_sec: "300"
+service_account: rest-api-node-413916@appspot.gserviceaccount.com
